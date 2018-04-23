@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.jumpto</groupId>
-	<artifactId>nirvana</artifactId>
+	<artifactId>name</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>nirvana</name>
+	<name>name</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

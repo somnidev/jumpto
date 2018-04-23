@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jumpto</title>
+</head>
+<body>
+
+<h1>Liliput - Generate new short url</h1>
+
+<form action="#" th:action="@{/liliput-add}" th:object="${url}" method="post">
+    <p>Url: <input type="text" th:field="*{name}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>
