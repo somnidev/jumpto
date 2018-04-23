@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-
 @Controller
 public class LiliputController {
 
@@ -18,9 +16,6 @@ public class LiliputController {
 
     @Autowired
     private LiliputService liliputService;
-
-    // TODO: Use a repository...!
-    private HashMap<String, String> liliputs = new HashMap<>();
 
     @RequestMapping("/")
     public String getIndex(Model model) {
@@ -32,7 +27,7 @@ public class LiliputController {
 
     @RequestMapping("/{liliput}")
     public String getUrl(@PathVariable("liliput") String liliput, Model model) {
-        String url = liliputs.getOrDefault(liliput, "http://liliput.com");
+        String url = liliputService.getUrlFromLiliput(liliput);
         model.addAttribute("lili", "Short url: " + liliput);
         model.addAttribute("redirect", "Full Url: " + url);
         return "redirect";
@@ -41,10 +36,11 @@ public class LiliputController {
 
     @PostMapping("/liliput-add")
     public String addUrl(@ModelAttribute(name="url") Url url, Model model) {
-        // TODO: check for existing url... if exists use the existing short url!
-        // String liliputService.checkForUrl(...)
-        String liliput = liliputService.generateLiliput(url.getName());
-        liliputs.put(liliput, url.getName());
+        String liliput = liliputService.getLiliputFromUrl(url.getName());
+        if (liliput == null) {
+            liliput = liliputService.generateLiliput(url.getName());
+            liliputService.addUrlWithLiliput(url.getName(), liliput);
+        }
         model.addAttribute("lili", liliput);
         model.addAttribute("url", url.getName());
         return "added";
