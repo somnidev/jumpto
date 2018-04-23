@@ -19,6 +19,7 @@ public class LiliputController {
     @Autowired
     private LiliputService liliputService;
 
+    // TODO: Use a repository...!
     private HashMap<String, String> liliputs = new HashMap<>();
 
     @RequestMapping("/")
@@ -40,6 +41,8 @@ public class LiliputController {
 
     @PostMapping("/liliput-add")
     public String addUrl(@ModelAttribute(name="url") Url url, Model model) {
+        // TODO: check for existing url... if exists use the existing short url!
+        // String liliputService.checkForUrl(...)
         String liliput = liliputService.generateLiliput(url.getName());
         liliputs.put(liliput, url.getName());
         model.addAttribute("lili", liliput);

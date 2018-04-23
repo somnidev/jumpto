@@ -10,16 +10,17 @@ public class LiliputService {
     private static final String CHARACTERSET = "0123456789abcdefghijklmnopqrstuvwxyz";
     private static int CHARACTERSET_LENGTH = CHARACTERSET.length();
 
+    // TODO: Get from database...
     private AtomicInteger counter = new AtomicInteger(CHARACTERSET_LENGTH);
 
     public String generateLiliput(final String url) {
         int next = counter.getAndIncrement();
 
         String liliput = convert(next);
-
         return liliput;
     }
 
+    // TODO: move to tools class...
     public String convert(int number) {
         StringBuilder liliput = new StringBuilder();
         System.out.print("" + number);
@@ -31,9 +32,7 @@ public class LiliputService {
                 number /= CHARACTERSET_LENGTH;
             }
         }
-        liliput.reverse();
-        System.out.println(" -> "+ liliput.toString());
-        return liliput.toString();
+        return liliput.reverse().toString();
     }
 
 }
