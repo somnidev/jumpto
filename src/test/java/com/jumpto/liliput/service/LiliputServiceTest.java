@@ -22,4 +22,16 @@ public class LiliputServiceTest {
 //       }
 
     }
+
+    @Test
+    public void addUrlWithLiliputTest() {
+        LiliputService service = new LiliputService();
+        service.addUrlWithLiliput("http://www.heise.de", "heise");
+        String heise = service.getLiliputFromUrl("http://www.heise.de");
+        assertEquals("heise", heise);
+
+        String testo = service.getLiliputFromUrl("http://www.testo.com");
+        assertEquals("testo", testo);
+    }
+
 }
