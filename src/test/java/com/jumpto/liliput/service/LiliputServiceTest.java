@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class LiliputServiceTest {
 
     @Test
-    public void generateLiliput() {
+    public void generateLiliputTest() {
        LiliputService service = new LiliputService();
        assertEquals("0", service.convert(0));
        assertEquals("1", service.convert(1));

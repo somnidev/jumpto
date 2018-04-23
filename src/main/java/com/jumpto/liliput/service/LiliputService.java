@@ -25,12 +25,10 @@ public class LiliputService {
         StringBuilder liliput = new StringBuilder();
         System.out.print("" + number);
         if (number >= 0) {
-            liliput.append(CHARACTERSET.charAt(number % CHARACTERSET_LENGTH));
-            number /= CHARACTERSET_LENGTH;
-            while (number > 0) {
+            do {
                 liliput.append(CHARACTERSET.charAt(number % CHARACTERSET_LENGTH));
                 number /= CHARACTERSET_LENGTH;
-            }
+            } while (number > 0);
         }
         return liliput.reverse().toString();
     }
